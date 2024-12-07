@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accurate Land Pricing Calculator</title>
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/styles.css') }}">
+
+</head>
+<body>
+    <div style="display: flex;flex-direction: column; align-items: center;">
+    <h1>House price predictor</h1>
+    <form action="{{ url_for('predict')}}" method="POST">
+        <label for="location">Location</label>
+        <input name ="location" type="text">
+        <label for="square feet">Square feet</label>
+        <input name = "square feet" type="text">
+        <label for="bedrooms">Bedrooms</label>
+        <input name = "bedrooms" type="text">
+        <label for="bathrooms">Bathrooms</label>
+        <input name = "bathrooms" type="text">
+
+        <button>Predict</button>
+    </form>
+
+    </div>
+    <span>
+    {% if prediction %}
+    location: {{ details['location'] }}
+    <br>
+    sqfeet: {{ details['sqfeet'] }}
+    <br>
+    bedrooms: {{ details['bedrooms']}}
+    <br>
+    bathrooms: {{ details['bathrooms']}}
+    {{ prediction }}
+    {% endif %}
+
+    </span>
+
+</body>
+</html>
